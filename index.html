@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+
+    <script>
+
+        function updateTime() {
+            var currentTime = new Date().toLocaleString();
+            var timeText = document.querySelector("#timeElement");
+            timeText.innerHTML = currentTime;
+        }
+        setInterval(updateTime, 1000);
+
+    </script>
+
+     <div
+    style="position: absolute; width: 100%; display: flex; 
+    background-color: rgba(0, 236, 253, 0.15); 
+    color: #fff; justify-content: space-between; gap: 32px;">
+        <p
+          style="margin-left: 16px; font-weight: 700; background-color: rgba(256, 256, 256, 0.125); padding: 4px 12px; border-radius: 16px;">
+            ChosenCheeseOS
+        </p>
+        <p id="timeElement"
+          style="margin-right: 16px; background-color: rgba(256, 256, 256, 0.125); padding: 4px 12px; border-radius: 16px;">
+            Time
+        </p>
+  </div>
+
+    <body style="font-family: 'Times New Roman', Times, serif; 
+    color: rgb(247, 247, 248);
+    background-image:url(./images/RoomFullOfCheese.webp)">
+
+        <div style ="position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -70%); 
+        background-color: rgba(101, 253, 241, 0.25); backdrop-filter: blur(10px);
+        padding: 22px; border: solid; 
+        ">
+            
+            <h1 style="padding: 4px; margin: 4px; background-color: #3f8b75; color: #fff">Chosen Cheese OS</h1>
+            <h2> Introduction </h2>
+
+            <p>Hello world! I am a firm believer in <strong>The Chosen Cheese.</strong> <br>
+                It is quite definitively the bestest (and cheesiest) relic in The World. <br>
+                Make not any mistake, you insolent ignoramouses who idealize incongruous items, this cheese is Top Notch. <br>
+            </p>
+            
+            <img style="width: 250px; height: 250px"
+            src="./images/ChosenCheese.png" />
+
+            <br> <a href="https://slaythespire.wiki.gg/wiki/Slay_the_Spire_2:The_Chosen_Cheese" style="color: white">Chosen Cheese Guide</a> <br>
+        
+            </div>
+    </body>
+    <body>
+        <div style ="position: absolute; top: 90%; left: 50%; 
+        transform: translate(-50%, -50%);
+        background-color: rgba(101, 253, 241, 0.25); backdrop-filter: blur(10px);
+        padding: 22px; border: solid;">
+
+            <h2> Love of the Cheese </h2>
+            <p>
+                There is only one reason not to pick <strong>The Chosen Cheese</strong>--death. Other than such a reason, 
+                <strong> The Chosen Cheese </strong> is "Chosen" over the two common card draw most nearly always! <br>
+                Picking otherwise to be a contrarian is quite chuckleheaded, but I blame you not for your clownish choice.<br>
+                The +1 Max HP provides such a rejuvenating effect as well as adding great survivability. Why not go for it? Dear. 
+            </p>
+
+        </div>
+    </body>
+
+
+</html>
