@@ -2,7 +2,12 @@
 
 <html>
 
-    <script>
+
+    <body style="font-family: 'Times New Roman', Times, serif; 
+    color: rgb(247, 247, 248);
+    background-image:url(./images/RoomFullOfCheese.webp)">
+
+     <script>
 
         function updateTime() {
             var currentTime = new Date().toLocaleString();
@@ -12,52 +17,49 @@
         setInterval(updateTime, 1000);
 
     </script>
+   
 
-     <div
-    style="position: absolute; width: 100%; display: flex; 
-    background-color: rgba(0, 236, 253, 0.15); 
-    color: #fff; justify-content: space-between; gap: 32px;">
-        <p
-          style="margin-left: 16px; font-weight: 700; background-color: rgba(256, 256, 256, 0.125); padding: 4px 12px; border-radius: 16px;">
+    <div class="topbar" id="top">
+        <p style="margin-left: 16px; font-weight: 700; background-color: rgba(256, 256, 256, 0.125); padding: 4px 12px; border-radius: 16px;">
             ChosenCheeseOS
         </p>
-        <p id="timeElement"
-          style="margin-right: 16px; background-color: rgba(256, 256, 256, 0.125); padding: 4px 12px; border-radius: 16px;">
+        <p style="cursor: pointer" id="welcomeopen">Open The Cheese</p>
+        <p style="cursor: pointer" id="welcomeclose">Close The Cheese</p>
+        <p id="timeElement" style="margin-right: 16px; background-color: rgba(256, 256, 256, 0.125); padding: 4px 12px; border-radius: 16px;">
             Time
         </p>
-  </div>
+    </div>
 
-    <body style="font-family: 'Times New Roman', Times, serif; 
-    color: rgb(247, 247, 248);
-    background-image:url(./images/RoomFullOfCheese.webp)">
 
-        <div style ="position: absolute; top: 50%; left: 50%;
-        transform: translate(-50%, -70%); 
-        background-color: rgba(101, 253, 241, 0.25); backdrop-filter: blur(10px);
-        padding: 22px; border: solid; 
-        ">
+
+       
+    <div class="window" id="welcome" style ="top: 50%; left: 50%;
+        transform: translate(-50%, -70%); ">
             
             <h1 style="padding: 4px; margin: 4px; background-color: #3f8b75; color: #fff">Chosen Cheese OS</h1>
-            <h2> Introduction </h2>
+            <h2> Welcome </h2>
 
-            <p>Hello world! I am a firm believer in <strong>The Chosen Cheese.</strong> <br>
+            <p>
+                Hello world! I am a firm believer in <strong>The Chosen Cheese.</strong> <br>
                 It is quite definitively the bestest (and cheesiest) relic in The World. <br>
-                Make not any mistake, you insolent ignoramouses who idealize incongruous items, this cheese is Top Notch. <br>
+                Make not any mistake, you insolent ignoramouses who idealize incongruous items, this cheese is Top Notch. Take a look at this <strong> Chosen Cheese </strong>
+                I've given you. Isn't it beautiful? <br>
             </p>
             
             <img style="width: 250px; height: 250px"
             src="./images/ChosenCheese.png" />
 
             <br> <a href="https://slaythespire.wiki.gg/wiki/Slay_the_Spire_2:The_Chosen_Cheese" style="color: white">Chosen Cheese Guide</a> <br>
-        
-            </div>
-    </body>
-    <body>
-        <div style ="position: absolute; top: 90%; left: 50%; 
-        transform: translate(-50%, -50%);
-        background-color: rgba(101, 253, 241, 0.25); backdrop-filter: blur(10px);
-        padding: 22px; border: solid;">
 
+        </div>
+
+        <div class="window" id="cheeseDraggable" style="position:absolute; top:200px; left:200px">
+            <div id="cheeseDraggableheader">
+                <img src="./images/Chosen.png" width="100">
+            </div>
+        </div>
+
+        <div class="window" id="loveCheese" style="top: 90%; left: 50%; transform: translate(-50%, -50%);">
             <h2> Love of the Cheese </h2>
             <p>
                 There is only one reason not to pick <strong>The Chosen Cheese</strong>--death. Other than such a reason, 
@@ -65,8 +67,41 @@
                 Picking otherwise to be a contrarian is quite chuckleheaded, but I blame you not for your clownish choice.<br>
                 The +1 Max HP provides such a rejuvenating effect as well as adding great survivability. Why not go for it? Dear. 
             </p>
-
         </div>
+
+            <div id="desktopApps" style="padding-top: 64px; padding-left: 16px;"> 
+                <div class = "selected" style="text-align: center; padding: 16px; filter: drop-shadow(0 0 8px black); width: fit-content" id="appopen">
+                
+                    <img src="./images/CheeseClicker.png" style="width: 64px; height: 64px; border-radius: 16px;">
+                
+                    <p style="margin: 0px; color: #fff; ">Relic Rater</p>
+                </div>
+            </div>
+
+
+        <div class="window" id="app" 
+                style="top: 420px; left: 650px; width: 340px; display: none;">
+            <div id = "appheader" style="background-color: rgba(0, 236, 253, 0.966); margin: 0px; border-radius: 12px;
+                 padding: 16px; height: calc(100% - 60px);box-sizing: border-box;">
+        
+                <h2 style="margin-top:0;">Relic Rater</h2>
+                <p style="cursor: pointer" id="appclose">Close Relic Rater</p>
+        
+                <div style="background-color: rgba(0, 236, 253, 0.9); margin: 0px; border-radius: 12px; padding: 16px; box-sizing: border-box; display: flex; color: #000;">
+                <div id="sidebar" style="margin-right: 16px; min-width: 120px;">
+                </div>
+
+                <div id="contentArea" style="overflow-y: scroll; max-height: 260px;">
+                </div>
+            </div>
+
+            </div>
+        </div>
+
+      <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+        
+
     </body>
 
 

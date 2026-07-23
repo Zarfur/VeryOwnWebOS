@@ -1,0 +1,39 @@
+.topbar {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    background-color: rgba(0, 236, 253, 0.15);
+    color: #fff;
+    justify-content: space-between;
+    gap: 32px;
+	cursor: pointer;
+    border-radius:  20px;
+    border: solid 1px rgba(0,0,0,0.25);
+}
+
+.window {
+  border: solid;
+  display: block;
+  flex-direction: column;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 0px;
+  position: absolute;
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 236, 253, 0.15);
+}
+
+.windowheader {
+  width: 100%;
+  display: block;
+  align-items: center;
+  cursor: grab;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.headertext {
+  margin: 0px;
+  color: #fff;
+  font-weight: 500
+}

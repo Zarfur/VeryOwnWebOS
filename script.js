@@ -1,0 +1,270 @@
+// copied and pasted from thingy LoL
+
+
+// Make the DIV element draggable:
+dragElement(document.getElementById("cheeseDraggable"));
+dragElement(document.querySelector("#app"))
+dragElement(document.querySelector("#loveCheese"))
+dragElement(document.querySelector("#welcome"))
+
+
+
+
+// Step 1: Define a function called `dragElement` that makes an HTML element draggable.
+function dragElement(element) {
+  // Step 2: Set up variables to keep track of the element's position.
+  var initialX = 0;
+  var initialY = 0;
+  var currentX = 0;
+  var currentY = 0;
+
+  // Step 3: Check if there is a special header element associated with the draggable element.
+  if (document.getElementById(element.id + "header")) {
+    // Step 4: If present, assign the `dragMouseDown` function to the header's `onmousedown` event.
+    // This allows you to drag the window around by its header.
+    document.getElementById(element.id + "header").onmousedown = startDragging;
+  } else {
+    // Step 5: If not present, assign the function directly to the draggable element's `onmousedown` event.
+    // This allows you to drag the window by holding down anywhere on the window.
+    element.onmousedown = startDragging;
+  }
+
+  // Step 6: Define the `startDragging` function to capture the initial mouse position and set up event listeners.
+  function startDragging(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // Step 7: Get the mouse cursor position at startup.
+    initialX = e.clientX;
+    initialY = e.clientY;
+    // Step 8: Set up event listeners for mouse movement (`elementDrag`) and mouse button release (`closeDragElement`).
+    document.onmouseup = stopDragging;
+    document.onmousemove = dragElement;
+  }
+
+  // Step 9: Define the `elementDrag` function to calculate the new position of the element based on mouse movement.
+  function dragElement(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // Step 10: Calculate the new cursor position.
+    currentX = initialX - e.clientX;
+    currentY = initialY - e.clientY;
+    initialX = e.clientX;
+    initialY = e.clientY;
+    // Step 11: Update the element's new position by modifying its `top` and `left` CSS properties.
+    element.style.top = (element.offsetTop - currentY) + "px";
+    element.style.left = (element.offsetLeft - currentX) + "px";
+  }
+
+  // Step 12: Define the `stopDragging` function to stop tracking mouse movement by removing the event listeners.
+  function stopDragging() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+  
+}
+
+// welcome close stuff (copied)
+var welcomeScreenClose = document.querySelector("#welcomeclose")
+var welcomeScreenOpen = document.querySelector("#welcomeopen")
+var welcomeScreen = document.querySelector("#welcome")
+
+var appScreenClose = document.querySelector("#appclose")
+var appScreenOpen = document.querySelector("#appopen")
+var appScreen = document.querySelector("#app")
+
+var biggestIndex = 1;
+
+var topBar = document.querySelector("#top")
+
+function addWindowTapHandling(element) {
+  element.addEventListener("mousedown", () =>
+    handleWindowTap(element)
+  )
+}
+
+function handleWindowTap(element) {
+  biggestIndex++;  
+  element.style.zIndex = biggestIndex;
+  topBar.style.zIndex = biggestIndex + 1;
+}
+
+function openWindow(element) {
+  element.style.display = "block"
+  biggestIndex++; 
+  element.style.zIndex = biggestIndex;
+  topBar.style.zIndex = biggestIndex + 1;
+}
+
+function closeWindow(element) {
+  element.style.display = "none"
+}
+
+welcomeScreenClose.addEventListener("click", function() {
+  closeWindow(welcomeScreen);
+});
+
+appScreenClose.addEventListener("click", function() {
+  closeWindow(appScreen)
+  closeWindow(document.querySelector("#app"));
+})
+appScreenOpen.addEventListener("click", function() {
+  openWindow(appScreen)
+  handleIconTap(appScreen);
+})
+
+welcomeScreenOpen.addEventListener("click", function() {
+  openWindow(welcomeScreen);
+});
+
+
+addWindowTapHandling(welcomeScreen);
+addWindowTapHandling(document.querySelector("#loveCheese"));
+addWindowTapHandling(document.querySelector("#app"));
+
+//  app stuff
+var selectedIcon = undefined;
+
+function selectIcon(element){
+  element.classList.add("selected");
+  selectedIcon = element
+}
+
+function deselectIcon(element){
+  element.classList.remove("selected");
+  selectedIcon = undefined;
+}
+
+function handleIconTap(element){
+  if(element.classList.contains("selected")){
+    deselectIcon(element) 
+    openWindow(window)
+  }else{
+    selectIcon(element)
+  }
+
+  // content stuff...
+
+  var content = [
+    {
+      title: "The Chosen Cheese",
+      rating: "SSR",
+      content: ` 
+      <h3 style="margin: 0 0 4px 0; font-family: 'Times New Roman', Times, serif;">The Chosen Cheese</h3>
+      <p style="margin: 0 0 12px 0; font-size: 12px; font-weight: 700; letter-spacing: 1px; color: #3f8b75;">SSR</p>
+      <p>
+        The Rarest and Best Relic in The World! Granting +1 Max HP after each combat.
+        What's not to love? Other than its cost of spilled blood.
+      </p>
+
+      `
+
+    },
+    {
+      title: "Ice Cream",
+      rating: "SR",
+      content: ` 
+    
+      <h3 style="margin: 0 0 4px 0; font-family: 'Times New Roman', Times, serif;">The Chosen Cheese</h3>
+      <p style="margin: 0 0 12px 0; font-size: 12px; font-weight: 700; letter-spacing: 1px; color: #3f8b75;">SSR</p>
+      <p>
+        I love this relic--but not as much as The Chosen Cheese. It's pretty up there, though.
+        Ice Cream is just awesome!
+      </p>
+    
+      `
+    },
+    {
+      title: "Psalm Cylinder",
+      rating: "R",
+      content: ` 
+        <h3 style="margin: 0 0 4px 0; font-family: 'Times New Roman', Times, serif;">The Chosen Cheese</h3>
+      <p style="margin: 0 0 12px 0; font-size: 12px; font-weight: 700; letter-spacing: 1px; color: #3f8b75;">SSR</p>
+      <p>
+        These are cute little tracks, but they aren't particularly crazy. They're guarranteed, which is why they aren't SR.
+        Still, they are fun and the Whispering Vaults is rather cool.
+      </p>
+      
+
+      `
+    },
+    {
+      title: "Dart",
+      rating: "C",
+      content: ` 
+
+      <h3 style="margin: 0 0 4px 0; font-family: 'Times New Roman', Times, serif;">The Chosen Cheese</h3>
+      <p style="margin: 0 0 12px 0; font-size: 12px; font-weight: 700; letter-spacing: 1px; color: #3f8b75;">SSR</p>
+      <p>
+             Noob item. Eberybody has this one.
+      </p>
+  
+      `
+
+    },
+
+    {
+      title: "Gatchapon",
+      rating: "B",
+      content: ` 
+      <p>
+        <h3 style="margin: 0 0 4px 0; font-family: 'Times New Roman', Times, serif;">The Chosen Cheese</h3>
+      <p style="margin: 0 0 12px 0; font-size: 12px; font-weight: 700; letter-spacing: 1px; color: #3f8b75;">SSR</p>
+      <p>
+             Cool item. gamba. 
+      </p>
+      </p>
+      `
+    },
+
+    
+    {
+      title: "AA Turret",
+      rating: "A",
+      content: ` 
+      <p>
+        <h3 style="margin: 0 0 4px 0; font-family: 'Times New Roman', Times, serif;">The Chosen Cheese</h3>
+      <p style="margin: 0 0 12px 0; font-size: 12px; font-weight: 700; letter-spacing: 1px; color: #3f8b75;">SSR</p>
+      <p>
+          Very good utility throughout the entire game. Pesky air crafts.
+      </p>
+      </p>
+      `
+    },
+
+  ]
+
+  ///
+
+function setContent(index) {
+  var contentArea = document.querySelector("#contentArea");
+  contentArea.innerHTML = content[index].content;
+}
+
+function addToSideBar(index) {
+    var sidebar = document.querySelector("#sidebar");
+    var entry = content[index];
+    var newDiv = document.createElement("div");
+    newDiv.style = "cursor: pointer; margin-bottom: 12px;";
+
+    newDiv.innerHTML = `
+      <p style="margin: 0px; font-weight: 700;">
+        ${entry.title}
+      </p>
+      <p style="font-size: 12px; margin: 0px;">
+        ${entry.rating}
+      </p>
+    `;
+
+    newDiv.addEventListener("click", function() {
+      setContent(index);
+    });
+
+    sidebar.appendChild(newDiv);
+  }
+
+  for (let i = 0; i < content.length; i++) {
+    addToSideBar(i);
+  }
+
+  setContent(0);
+}
