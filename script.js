@@ -298,7 +298,7 @@ function updateCheese(){
     counter.innerHTML = "Cheese: " + totalCheese;
   }
 }
-setInterval(updateCheese, 100)
+setInterval(updateCheese, 1000)
 
 function handleIconTap2(element){
   if(element.classList.contains("selected")){
